@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Polly;
 
 namespace Pacco.Web.HttpClients
@@ -22,12 +23,12 @@ namespace Pacco.Web.HttpClients
         private readonly HttpClientOptions _options;
         private readonly ILogger<IHttpClient> _logger;
         
-        public CustomHttpClient(HttpClient client, HttpClientOptions options, ILogger<IHttpClient> logger)
+        public CustomHttpClient(HttpClient client, IOptions<HttpClientOptions> options, ILogger<IHttpClient> logger)
         {
             _client = client;
-            _options = options;
+            _options = options.Value;
             _logger = logger;
-            _client.BaseAddress = new Uri(options.ApiUrl);
+            _client.BaseAddress = new Uri(_options.ApiUrl);
         }
         
         public void SetAccessToken(string accessToken)

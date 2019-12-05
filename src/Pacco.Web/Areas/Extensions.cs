@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Pacco.Web.Areas.Identity;
+using Pacco.Web.Shared;
 
 namespace Pacco.Web.Areas
 {
@@ -8,8 +9,8 @@ namespace Pacco.Web.Areas
         public static IServiceCollection RegisterIdentityArea(this IServiceCollection services)
         {
             services.AddTransient<IIdentityService, IdentityService>();
-            services.AddSingleton<IdentityComponent>();
-//            services.AddSingleton<MenuComponent>;
+            services.AddScoped<IdentityComponent>();
+            services.AddScoped<MenuComponent>();
 
             return services;
         }

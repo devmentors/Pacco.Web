@@ -1,0 +1,59 @@
+@page "/sign-up"
+@using Pacco.Web.Areas.Identity
+@inject IdentityComponent Component;
+@inject NavigationManager NavigationManager;
+
+
+<div class="columns">
+    <div class="column is-4"></div>
+    <div class="column is-4">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">New user</p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input @bind="@Email" class="input is-medium" type="email" placeholder="Email"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input @bind="@Password" class="input is-medium" type="password" placeholder="Password"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Role</label>
+                        <div class="control">
+                            <div class="select is-medium is-fullwidth">
+                                <select @bind="@Role">
+                                    <option>User</option>
+                                    <option>Admin</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <button type="button" class="button is-primary is-medium is-fullwidth">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column is-4"></div>
+</div>
+
+@functions
+{  
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public string Role { get; set; }
+
+    async Task SignUpAsync()
+    {
+        await Component.SignUpAsync(Email, Password, Role);
+        NavigationManager.NavigateTo("/sign-in");
+    }
+}

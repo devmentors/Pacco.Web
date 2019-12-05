@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pacco.Web.Areas;
 using Pacco.Web.Data;
+using Pacco.Web.HttpClients;
 
 namespace Pacco.Web
 {
@@ -28,7 +30,9 @@ namespace Pacco.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            services.Configure<HttpClientOptions>(Configuration.GetSection("httpClient"));
+            services.AddHttpClient<IHttpClient, CustomHttpClient>();
+            services.RegisterIdentityArea();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
