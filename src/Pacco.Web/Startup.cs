@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Pacco.Web.Areas;
 using Pacco.Web.Data;
 using Pacco.Web.HttpClients;
+using Sotsera.Blazor.Toaster.Core.Models;
 
 namespace Pacco.Web
 {
@@ -33,6 +34,12 @@ namespace Pacco.Web
             services.Configure<HttpClientOptions>(Configuration.GetSection("httpClient"));
             services.AddHttpClient<IHttpClient, CustomHttpClient>();
             services.RegisterIdentityArea();
+            services.AddToaster(config =>
+            {
+                config.PositionClass = Defaults.Classes.Position.BottomFullWidth;
+                config.PreventDuplicates = true;
+                config.NewestOnTop = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

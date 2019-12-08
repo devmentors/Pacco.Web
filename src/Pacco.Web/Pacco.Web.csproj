@@ -8,6 +8,7 @@
     <PackageReference Include="Blazorise.Bulma" Version="0.8.7.1" />
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="0.8.7.1" />
     <PackageReference Include="Polly" Version="7.1.1" />
+    <PackageReference Include="Sotsera.Blazor.Toaster" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

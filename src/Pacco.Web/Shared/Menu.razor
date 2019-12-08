@@ -1,10 +1,11 @@
+@using Microsoft.AspNetCore.Components
 @inject NavigationManager NavigationManager
 @inject MenuComponent MenuComponent
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
 <div class="navbar-brand">
         <a class="navbar-item">
-            <img src="/assets/img/logo2.png" width="130" height="30" />
+            <img src="/assets/img/pacco.jpg" width="130" height="30" />
         </a>
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -14,42 +15,27 @@
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">                     
-           <a class="navbar-item" @onclick="NavigateToOrders">Order</a>
-           <a class="navbar-item" @onclick="NavigateToParcels">Parcels</a>
+           <a class="navbar-item" @onclick="@(() => Navigate("orders"))">Order</a>
+           <a class="navbar-item" @onclick="@(() => Navigate("parcels"))">Parcels</a>
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <button class="button @ClassSecondary" @onclick="NavigateToSignUp">Sign up</button>
-                    <button class="button @ClassPrimary" @onclick="NavigateToSignIn">Sign in</button>
+                    <button class="button @CssClassSecondary" @onclick="@(() => Navigate("sign-up"))">Sign up</button>
+                    <button class="button @CssClassPrimary" @onclick="@(() => Navigate("sign-in"))">Sign in</button>
                 </div>
             </div>
         </div>
     </div>
 </nav>
 
-@code
+@functions
 {
-    private string ClassSecondary { get; set; } = "is-light";
-    private string ClassPrimary { get; set; } = "is-primary";
-
-    private void NavigateToSignUp()
-    {
-        NavigationManager.NavigateTo("sign-up"); 
-    }    
+        const string CssClassSecondary = "is-light";
+        const string CssClassPrimary = "is-warning";
     
-    private void NavigateToSignIn()
+    private void Navigate(string path)
     {
-        NavigationManager.NavigateTo("sign-in"); 
-    }   
-    
-    private void NavigateToParcels()
-    {
-        NavigationManager.NavigateTo("parcels"); 
-    }    
-    
-    private void NavigateToOrders()
-    {
-        NavigationManager.NavigateTo("orders"); 
+        NavigationManager.NavigateTo(path);
     }
 }
