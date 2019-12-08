@@ -1,7 +1,9 @@
 @page "/sign-in"
+@using Microsoft.AspNetCore.Components
 @using Pacco.Web.Areas.Identity
 @inject IdentityComponent Component;
-
+@inject NavigationManager NavigationManager;
+@inject Sotsera.Blazor.Toaster.IToaster Toaster;
 
 <div class="columns">
     <div class="column is-4"></div>
@@ -25,7 +27,7 @@
                         </div>
                     </div>
                     <br/>
-                    <a href="/"><button type="button" class="button is-warning is-medium is-fullwidth">Sign in</button></a>
+                    <a href="/"><button type="button" class="button is-warning is-medium is-fullwidth" @onclick="@(() => SignInAsync())">Sign in</button></a>
                 </div>
             </div>
         </div>
@@ -37,4 +39,11 @@
 {  
     public string Email { get; set; }
     public string Password { get; set; }
+    
+    async Task SignInAsync()
+    {
+        await Component.SignInAsync(Email, Password);
+        Toaster.Success("You have been authenticated.");
+        NavigationManager.NavigateTo("/orders");
+    }
 }

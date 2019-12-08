@@ -4,7 +4,7 @@ using Pacco.Web.HttpClients;
 
 namespace Pacco.Web.Areas.Identity
 {
-    class IdentityService : IIdentityService
+    public class IdentityService : IIdentityService
     {
         private readonly IHttpClient _httpClient;
 

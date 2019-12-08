@@ -29,6 +29,7 @@ namespace Pacco.Web.HttpClients
             _options = options.Value;
             _logger = logger;
             _client.BaseAddress = new Uri(_options.ApiUrl);
+            _client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
         }
         
         public void SetAccessToken(string accessToken)
@@ -65,8 +66,7 @@ namespace Pacco.Web.HttpClients
             => TryExecuteAsync(uri, client => client.DeleteAsync(uri));
         
         private static StringContent GetPayload<T>(T request)
-            => new StringContent(JsonSerializer.Serialize(request, JsonSerializerOptions), Encoding.UTF8,
-                "application/json");
+            => new StringContent(JsonSerializer.Serialize(request, JsonSerializerOptions));
         
         private Task<(bool success, string content)> TryExecuteAsync(string uri,
             Func<HttpClient, Task<HttpResponseMessage>> client)
