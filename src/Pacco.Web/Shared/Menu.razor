@@ -2,7 +2,7 @@
 @inject NavigationManager NavigationManager
 @inject MenuComponent MenuComponent
 
-<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 <div class="navbar-brand">
         <a class="navbar-item">
             <img src="/assets/img/pacco.jpg" width="130" height="30" />
@@ -21,8 +21,8 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <button class="button @CssClassSecondary" @onclick="@(() => Navigate("sign-up"))">Sign up</button>
-                    <button class="button @CssClassPrimary" @onclick="@(() => Navigate("sign-in"))">Sign in</button>
+                    <button class="button @CssClassPrimaryDarker" @onclick="@(() => Navigate("sign-up"))">Sign up</button>
+                    <button class="button @CssClassSecondary" @onclick="@(() => Navigate("sign-in"))">Sign in</button>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
 @functions
 {
         const string CssClassSecondary = "is-light";
-        const string CssClassPrimary = "is-warning";
+        const string CssClassPrimaryDarker = "is-primary-darker";
     
     private void Navigate(string path)
     {

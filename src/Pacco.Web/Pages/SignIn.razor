@@ -5,6 +5,7 @@
 @inject NavigationManager NavigationManager;
 @inject Sotsera.Blazor.Toaster.IToaster Toaster;
 
+
 <div class="columns">
     <div class="column is-4"></div>
     <div class="column is-4">
@@ -27,7 +28,7 @@
                         </div>
                     </div>
                     <br/>
-                    <a href="/"><button type="button" class="button is-warning is-medium is-fullwidth" @onclick="@(() => SignInAsync())">Sign in</button></a>
+                    <a href="/"><button type="button" class="button is-primary is-medium is-fullwidth" @onclick="@(() => SignInAsync())">Sign in</button></a>
                 </div>
             </div>
         </div>

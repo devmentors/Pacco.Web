@@ -6,3 +6,23 @@
 .body-displaying {
     margin-top: 3%;
 }
+
+.is-primary {
+    background-color: rgb(255, 125, 45) !important;
+}
+
+.is-primary-darker {
+    background-color: rgb(255, 90, 0);
+    border-color: rgb(255, 90, 0);
+    color: white;
+}
+
+.is-primary-darker:hover {
+    background-color: rgb(200, 75, 0);
+    border-color: rgb(200, 75, 0);
+    color: white;
+}
+
+.navbar.is-primary .navbar-start>a.navbar-item:hover {
+    background-color: rgb(255, 90, 0);
+}
